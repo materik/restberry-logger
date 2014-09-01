@@ -1,11 +1,11 @@
 {
-    "name": "restberry-logging",
+    "name": "restberry-logger",
     "version": "0.1.0",
     "description": "",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/materik/restberry-logging.git"
+        "url": "https://github.com/materik/restberry-logger.git"
     },
     "keywords": [
         "restberry"
@@ -22,7 +22,7 @@
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/materik/restberry-logging/issues"
+        "url": "https://github.com/materik/restberry-logger/issues"
     },
     "dependencies": {
         "restberry-utils": "0.1.x",
