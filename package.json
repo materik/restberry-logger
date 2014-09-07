@@ -16,7 +16,7 @@
         "restberry-utils": "0.1.x",
         "underscore": "1.5.x"
     },
-    "description": "Logger class for HTTP requests and responses.",
+    "description": "Logger class for HTTP requests and responses",
     "homepage": "http://restberry.com",
     "keywords": [
         "restberry"
