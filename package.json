@@ -13,7 +13,8 @@
         }
     ],
     "dependencies": {
-        "restberry-utils": "0.1.x",
+        "colors": "1.1.x",
+        "restberry-utils": "1.0.x",
         "underscore": "1.8.x"
     },
     "description": "Logger class for HTTP requests and responses",
@@ -28,5 +29,9 @@
         "type": "git",
         "url": "https://github.com/materik/restberry-logger.git"
     },
-    "version": "0.1.1"
+    "scripts": {
+        "test": "mocha ./test.js",
+        "validate": "jscs *.js && jshint *.js"
+    },
+    "version": "1.0.0"
 }
