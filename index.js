@@ -3,8 +3,6 @@ var colors = require('colors');
 var utils = require('restberry-utils');
 
 var LOG_SEP = '|';
-var PASSWORD_KEY = 'password';
-var PASSWORD_REPL = '**********';
 var STATUS_SUCCESS_MIN = 200;
 var STATUS_SUCCESS_MAX = 300;
 
@@ -42,20 +40,6 @@ var remoteAddressOfReq = function(req) {
     return undefined;
 };
 
-var replacePassword = function(data) {
-    for (var key in data) {
-        if (key === PASSWORD_KEY) {
-            data[key] = PASSWORD_REPL;
-        } else {
-            var val = data[key];
-            if (_.isObject(val) && !_.isFunction(val)) {
-                data[key] = replacePassword(val);
-            }
-        }
-    }
-    return data;
-};
-
 module.exports = {
 
     error: function() {
@@ -75,7 +59,7 @@ module.exports = {
         var msg = args.pop();
         if (_.isObject(msg)) {
             msg = _.clone(msg);
-            msg = replacePassword(msg);
+            msg = utils.censorPassword(msg);
             msg = JSON.stringify(msg, undefined, 2);
         }
         var logs = _.map(args, function(arg) {
