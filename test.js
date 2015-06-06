@@ -1,3 +1,4 @@
+var assert = require('assert');
 var logger = require('./index');
 
 describe('logger', function() {
@@ -31,7 +32,11 @@ describe('logger', function() {
             path: '/login',
         };
         logger.req(req);
+        assert.equal(req.body.password, 'asdf1234');
         req = {
+            body: {
+                email: 'test@restberry.com',
+            },
             method: 'GET',
             connection: {
                 remoteAddress: '192.168.0.1',

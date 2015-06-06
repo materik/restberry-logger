@@ -12,6 +12,10 @@ var date = function() {
     return colors.grey(new Date().toISOString());
 };
 
+var methodHasBody = function(method) {
+    return method === utils.httpMethod.POST || method === utils.httpMethod.PUT;
+};
+
 var isResSuccessful = function(code) {
     return code >= STATUS_SUCCESS_MIN && code < STATUS_SUCCESS_MAX;
 };
@@ -52,24 +56,25 @@ var replacePassword = function(data) {
     return data;
 };
 
-module.exports = logger = {
+module.exports = {
 
     error: function() {
         var args = _.toArray(arguments);
         args.unshift(colors.red);
-        logger.log.apply(this, args);
+        this.log.apply(this, args);
     },
 
     info: function(part1, part2, msg) {
         var args = _.toArray(arguments);
         args.unshift(colors.white.bold);
-        logger.log.apply(this, args);
+        this.log.apply(this, args);
     },
 
     log: function(color) {
         var args = _.rest(_.toArray(arguments));
         var msg = args.pop();
         if (_.isObject(msg)) {
+            msg = _.clone(msg);
             msg = replacePassword(msg);
             msg = JSON.stringify(msg, undefined, 2);
         }
@@ -88,10 +93,13 @@ module.exports = logger = {
     req: function(req, json) {
         json = json || req.body;
         var method = req.method;
+        if (!methodHasBody(method)) {
+            json = undefined;
+        }
         var address = remoteAddressOfReq(req);
         var color = methodColor(method);
         var url = utils.getReqPath(req);
-        logger.log(color, address, method, url, json);
+        this.log(color, address, method, url, json);
     },
 
     res: function(res, json) {
@@ -99,16 +107,16 @@ module.exports = logger = {
         var code = res.statusCode;
         var address = remoteAddressOfReq(res.req);
         if (isResSuccessful(code)) {
-            logger.success(address, code, json);
+            this.success(address, code, json);
         } else {
-            logger.error(address, code, json);
+            this.error(address, code, json);
         }
     },
 
     success: function(address, code, msg) {
         var args = _.toArray(arguments);
         args.unshift(colors.green);
-        logger.log.apply(this, args);
+        this.log.apply(this, args);
     },
 
 };

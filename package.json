@@ -33,5 +33,5 @@
         "test": "mocha ./test.js",
         "validate": "jscs *.js && jshint *.js"
     },
-    "version": "1.0.0"
+    "version": "1.0.1"
 }
