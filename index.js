@@ -5,6 +5,7 @@ var utils = require('restberry-utils');
 var LOG_SEP = '|';
 var STATUS_SUCCESS_MIN = 200;
 var STATUS_SUCCESS_MAX = 300;
+var WARN_PREFIX = 'WARN';
 
 var date = function() {
     return colors.grey(new Date().toISOString());
@@ -101,6 +102,11 @@ module.exports = {
         var args = _.toArray(arguments);
         args.unshift(colors.green);
         this.log.apply(this, args);
+    },
+
+    warn: function(msg, prefix) {
+        prefix = colors.yellow((prefix || WARN_PREFIX) + ':');
+        console.log(prefix, msg);
     },
 
 };
