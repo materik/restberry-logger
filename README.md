@@ -3,7 +3,7 @@ Restberry-Logger
 
 [![](https://img.shields.io/npm/v/restberry-logger.svg)](https://www.npmjs.com/package/restberry-logger) [![](https://img.shields.io/npm/dm/restberry-logger.svg)](https://www.npmjs.com/package/restberry-logger)
 
-Logger for HTTP requests and responses. Color coded for UNIX console.
+Restberry HTTP logger.
 
 ## Install
 

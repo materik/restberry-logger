@@ -17,7 +17,7 @@
         "restberry-utils": "1.0.x",
         "underscore": "1.8.x"
     },
-    "description": "Logger class for HTTP requests and responses",
+    "description": "Restberry HTTP logger",
     "homepage": "http://restberry.com",
     "keywords": [
         "restberry"
@@ -33,5 +33,5 @@
         "test": "mocha ./test.js",
         "validate": "jscs *.js && jshint *.js"
     },
-    "version": "1.0.5"
+    "version": "1.0.6"
 }
