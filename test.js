@@ -34,9 +34,6 @@ describe('logger', function() {
         logger.req(req);
         assert.equal(req.body.password, 'asdf1234');
         req = {
-            body: {
-                email: 'test@restberry.com',
-            },
             method: 'GET',
             connection: {
                 remoteAddress: '192.168.0.1',
@@ -62,6 +59,7 @@ describe('logger', function() {
         };
         logger.req(req);
         req = {
+            body: {},
             method: 'DELETE',
             connection: {
                 remoteAddress: '192.168.0.1',

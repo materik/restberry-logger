@@ -76,9 +76,9 @@ module.exports = {
     },
 
     req: function(req, json) {
-        json = json || req.body;
+        json = json || req.body || {};
         var method = req.method;
-        if (!methodHasBody(method)) {
+        if (!methodHasBody(method) && !_.size(json)) {
             json = undefined;
         }
         var address = remoteAddressOfReq(req);
