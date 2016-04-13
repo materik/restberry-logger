@@ -15,6 +15,7 @@ describe('logger', function() {
     });
 
     describe('success', function() {
+        logger.success('127.0.0.1', '201', 0);
         logger.success('127.0.0.1', '201', 'Created');
         logger.success('127.0.0.1', '201', {id: '123'});
     });

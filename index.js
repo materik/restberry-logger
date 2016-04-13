@@ -69,7 +69,7 @@ module.exports = {
         logs.unshift(date());
         logs.push(msg);
         logs = _.filter(logs, function(log) {
-            return !!log;
+            return log !== undefined && log !== null && log !== '';
         });
         var log = logs.join(colors.white(LOG_SEP));
         console.log(log);
